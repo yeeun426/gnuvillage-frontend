@@ -1,5 +1,5 @@
-import logo from "../dressed_standing_boo.svg";
-import "./LogIn.css";
+import boo from "../assets/images/dressed_standing_boo.svg";
+import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
@@ -9,6 +9,12 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+
+const LogoBoo = styled.img`
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+`;
 
 function LogIn() {
   const handleSubmit = (event) => {
@@ -30,7 +36,7 @@ function LogIn() {
           alignItems: "center",
         }}
       >
-        <img src={logo} className="App-logo" alt="GNUVILLAGE" />
+        <LogoBoo src={boo} alt="GNUVILLAGE" />
         <Typography component="h1" variant="h4">
           GNUVILLAGE
         </Typography>
