@@ -21,7 +21,6 @@ function App() {
         <Route exact path="/" element={<Main />}></Route>
         <Route path="/intro" element={<Introduction />}></Route>
         <Route path="/history" element={<History />}></Route>
-
         <Route path="/login" element={<LogIn />}></Route>
         <Route path="/study" element={<Study />}></Route>
         <Route path="/study-results" element={<StudyResults />}></Route>
