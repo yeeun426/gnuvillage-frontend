@@ -117,6 +117,24 @@ export default function Study() {
 
         <hr />
 
+        <StudyTitle2>자유 스터디</StudyTitle2>
+        <StudyTitle3>자유롭게 스터디를 만들어 활동할 수 있습니다.</StudyTitle3>
+        <StudyButtons>
+          {studys2.map((study) => {
+            return (
+              <StudyBtn
+                title={study.name}
+                key={study.id}
+                onClick={() => {
+                  navigate(study.url);
+                }}
+              />
+            );
+          })}
+        </StudyButtons>
+
+        <hr />
+
         <StudyTitle2>대외활동 스터디</StudyTitle2>
         <StudyTitle3>
           공모전, 해커톤 등 외부활동을 위한 팀을 만들어 활동할 수 있습니다.
