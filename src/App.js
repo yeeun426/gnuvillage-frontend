@@ -12,6 +12,11 @@ import Study from "./pages/StudyPost";
 import Recruit from "./pages/Recruit";
 import RecruitDetail from "./pages/RecruitDetail";
 import Mypage from "./pages/Mypage";
+import StudyNoticeList from "./pages/StudyNoticeList";
+import StudyIntro from "./pages/StudyIntro";
+import LogIn from "./pages/LogIn";
+import StudyNotice from "./pages/StudyNotice";
+import StudyResults from "./pages/StudyResults";
 
 function App() {
   return (
