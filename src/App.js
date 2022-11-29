@@ -23,10 +23,10 @@ function App() {
         <Route path="/history" element={<History />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
         <Route path="/study" element={<Study />}></Route>
-        <Route path="/study-results" element={<StudyResults />}></Route>
-        <Route path="/study-notice" element={<StudyNotice />}></Route>
-        <Route path="/study-intro/c" element={<StudyIntro />}></Route>
         <Route path="/study-notice/c" element={<StudyNoticeList />}></Route>
+        <Route path="/study-intro/c" element={<StudyIntro />}></Route>
+        <Route path="/study-notice" element={<StudyNotice />}></Route>
+        <Route path="/study-results" element={<StudyResults />}></Route>
       </Routes>
     </div>
   );
