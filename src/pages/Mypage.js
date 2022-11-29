@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { MypageStyle } from "../styles/styled";
+import { MypageStyle } from "../styles/mypageStyled";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
