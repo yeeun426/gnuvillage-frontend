@@ -2,7 +2,7 @@ import React from 'react';
 import {HistoryStyle} from '../styles/styled'
 import Navbar from '../components/Navbar';
 
-export default function Introduction() {
+export default function History() {
     return(
         <HistoryStyle>
             <Navbar />
