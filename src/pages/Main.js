@@ -106,7 +106,7 @@ function Main() {
         <div className = "main-review-gnuvil">
           <div className="main-sub-title">
             <span>동아리 후기</span>
-            <button><BsArrowRight/></button>
+            <Link to = "/review"><button><BsArrowRight/></button></Link>
           </div>
 
           <div className = "main-review-container">
