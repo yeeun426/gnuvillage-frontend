@@ -10,7 +10,6 @@ const StudyNoticeListStyle = styled.div``;
 
 const StudyNoticeListPage = styled.div`
   position: relative;
-  /* top: 200px; */
   margin: 30px 80px;
 `;
 
