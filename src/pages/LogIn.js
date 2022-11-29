@@ -36,7 +36,9 @@ function LogIn() {
           alignItems: "center",
         }}
       >
-        <LogoBoo src={boo} alt="GNUVILLAGE" />
+        <Link href="/">
+          <LogoBoo src={boo} alt="GNUVILLAGE" />
+        </Link>
         <Typography component="h1" variant="h4">
           GNUVILLAGE
         </Typography>
