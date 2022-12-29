@@ -47,7 +47,7 @@ async function onMount(setStudyState, setProfileState, navigate) {
             newStudyState.push({
               studyName: res.data.name,
               description: res.data.description,
-              url: "/team/" + res.data.id,
+              url: "/study-notice/" + res.data.id,
             });
           }
         })
@@ -151,13 +151,13 @@ export default function Mypage() {
   return (
     <MypageStyle>
       <Navbar />
-      <div className="mypage-header">
+      <div className="base-header">
         <img
-          className="mypage-header-img"
+          className="base-header-img"
           src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
           alt="headerImg"
         />
-        <div className="mypage-header-title">Mypage</div>
+        <div className="base-header-title">Mypage</div>
       </div>
       <div className="container">
         <div className="d-flex flex-md-row flex-column mt-5">

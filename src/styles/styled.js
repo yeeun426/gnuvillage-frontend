@@ -383,3 +383,33 @@ export const HistoryStyle = styled.div`
     }
   }
 `;
+
+export const BaseStyle = styled.div`
+  .base-header {
+    position: relative;
+  }
+
+  .base-header img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .base-header-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .base-title {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+    padding: 20px 0;
+    font-family: "Pretendard";
+  }
+`;
