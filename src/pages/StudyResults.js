@@ -43,7 +43,7 @@ export default function StudyResults() {
 
       <StudyResultsPage>
         <Pos>
-          <Link to="/study-intro/c">
+          <Link to="/study-intro/0" style={{ color: "black" }}>
             <StudyResultItem></StudyResultItem>
           </Link>
           <StudyResultItem></StudyResultItem>
