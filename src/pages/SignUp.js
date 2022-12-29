@@ -1,3 +1,5 @@
+import React,{useState} from 'react'
+
 import boo from "../assets/images/dressed_standing_boo.svg";
 import styled from "styled-components";
 import TextField from "@mui/material/TextField";
@@ -6,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import axios from 'axios'; 
 
 const LogoBoo = styled.img`
   width: 120px;
@@ -14,6 +17,8 @@ const LogoBoo = styled.img`
 `;
 
 function SignUp() {
+  const [signup, setSignup] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -26,6 +31,30 @@ function SignUp() {
       email: data.get("email"),
       phone: data.get("phone"),
     });
+
+    axios
+    .post("http://203.253.76.182/users", {
+      id: data.get("id"),
+      password: data.get("password"),
+      name: data.get("name"),
+      email: data.get("email"),
+      phone: data.get("phone"),
+      department: data.get("dept"),
+      message: data.get("stuId"),
+    })
+    .then((response) => {
+      alert('회원가입 성공!');
+      localStorage.setItem('token', response.data.jwt);
+      console.log('User profile', response.data.userEmail);
+      console.log("User token", response.data.jwt);
+      console.log(response.data);
+      document.location.href = 'http://localhost:3000/login';
+    })
+    .catch((error) => {
+      alert(error.response.data.message)
+      setSignup(false)
+    })
+
   };
 
   return (

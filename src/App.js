@@ -17,6 +17,7 @@ import StudyIntro from "./pages/StudyIntro";
 import LogIn from "./pages/LogIn";
 import StudyNotice from "./pages/StudyNotice";
 import StudyResults from "./pages/StudyResults";
+import Signup from './pages/SignUp'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/review" element={<Review />}></Route>
         <Route path="/review/write" element={<WriteReview />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
         <Route path="/study" element={<Study />}></Route>
         <Route path="/recruit" element={<Recruit />}></Route>
         <Route path="/recruit/Detail" element={<RecruitDetail />}></Route>
