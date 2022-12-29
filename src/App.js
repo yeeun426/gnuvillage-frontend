@@ -35,6 +35,10 @@ function App() {
         <Route path="/study-notice/0" element={<StudyNoticeList />}></Route>
         <Route path="/study-intro/0" element={<StudyIntro />}></Route>
         <Route path="/study-notice" element={<StudyNotice />}></Route>
+        <Route
+          path="/study-notice/:groupId"
+          element={<StudyNoticeList />}
+        ></Route>
         <Route path="/study-results" element={<StudyResults />}></Route>
 
         {/* <Route index element={<Mypage />}></Route> */}
