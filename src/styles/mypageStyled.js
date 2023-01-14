@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { BaseStyle } from "./styled";
 
 export const MypageStyle = styled(BaseStyle)`
+  .logout {
+    border: none;
+    background: none;
+  }
   .tab-content {
     text-align: start;
   }

@@ -34,8 +34,9 @@ function LogIn() {
     .then((res) => {
       console.log(res)
       console.log(res.data)
-      debugger
-      sessionStorage.setItem("id", res.data)
+      sessionStorage.setItem("id", data.get("id"))
+      sessionStorage.setItem("token", res.data)
+      // debugger
       setUser(sessionStorage.getItem("id"));
       console.log(user)
 
