@@ -1,26 +1,7 @@
 import styled from "styled-components";
+import { BaseStyle } from "./styled";
 
-export const StudyNoticeListStyle = styled.div`
-  .notice-list-header {
-    position: relative;
-  }
-
-  .notice-list-header img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-
-  .notice-list-header-title {
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
+export const StudyNoticeListStyle = styled(BaseStyle)`
   .container {
     text-align: left;
   }
