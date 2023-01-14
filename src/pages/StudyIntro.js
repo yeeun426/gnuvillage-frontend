@@ -56,10 +56,10 @@ export default function StudyIntro() {
       <StudyIntroPage>
         <PageIndex>
           <Link to="/study" style={{ textDecoration: "none" }}>
-            정규스터디
+            스터디 목록
           </Link>
           <span>{" > "}</span>
-          <Link to="/study-intro/c" style={{ textDecoration: "none" }}>
+          <Link to="/study-intro/0" style={{ textDecoration: "none" }}>
             C
           </Link>
         </PageIndex>

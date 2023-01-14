@@ -5,6 +5,7 @@ import { NavbarStyle } from "../styles/styled";
 
 function Navbar() {
   return (
+    
     <NavbarStyle>
       <div className="Navbar">
         <div className="navbar-logo">
@@ -71,12 +72,19 @@ function Navbar() {
               </div>
             </div>
           </div>
-
+          {sessionStorage.getItem('id') === null ?
           <div className="navbar-my">
             <Link to="/login" style={{ textDecoration: "none" }}>
               <div>Login</div>
             </Link>
           </div>
+          :
+          <div className="navbar-my">
+            <Link to="/mypage" style={{ textDecoration: "none" }}>
+              <div>Mypage</div>
+            </Link>
+          </div>
+          }
         </div>
       </div>
     </NavbarStyle>

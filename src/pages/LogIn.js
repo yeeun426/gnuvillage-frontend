@@ -9,6 +9,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import axios from 'axios'; 
+import React,{useState} from 'react'
 
 const LogoBoo = styled.img`
   width: 120px;
@@ -17,13 +19,35 @@ const LogoBoo = styled.img`
 `;
 
 function LogIn() {
+  const [user, setUser] = useState('');
+  let sessionStorage = window.sessionStorage;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+
+    axios
+    .post("http://203.253.76.182/auth/login",{
       id: data.get("id"),
       password: data.get("password"),
-    });
+    })
+    .then((res) => {
+      console.log(res)
+      console.log(res.data)
+      debugger
+      sessionStorage.setItem("id", res.data)
+      setUser(sessionStorage.getItem("id"));
+      console.log(user)
+
+      alert("로그인 성공")
+
+      document.location.href = 'http://localhost:3000';
+      console.log(user);
+    })
+    .catch((error) => {
+      alert(error.response.data.message)
+    })
+
   };
 
   return (

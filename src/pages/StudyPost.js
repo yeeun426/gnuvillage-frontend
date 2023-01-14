@@ -12,7 +12,7 @@
 //     return(
 //         <StudyStyle>
 //             <Navbar />
-            
+
 //             <div className = "intro-title-img">
 //                 <img className = "main-img" src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg" alt = "mainImg" />
 //                 <div className= "intro-header-title">Study</div>
@@ -39,9 +39,9 @@
 //                             <button onClick = {() => setCalendar(false)}>회의록</button>
 //                         </div>
 
-//                     {calendar ? 
+//                     {calendar ?
 //                         <div className="study-calendar">
-//                             <Calendar 
+//                             <Calendar
 //                                 onChange = {onChange}
 //                                 value = {value}
 //                             />

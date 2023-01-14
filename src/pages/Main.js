@@ -15,6 +15,8 @@ import "swiper/css/navigation";
 SwiperCore.use([Navigation]);
 
 function Main() {
+  console.log(sessionStorage);
+  
   return (
     <MainStyle>
       <Navbar />
