@@ -8,11 +8,12 @@ import Pagination from "../components/Pagination";
 const BACKEND_URL = "http://114.206.145.160:3000";
 let userId = "superuser";
 let password = "testpw123";
+let isAdmin = false;
 let pageNo = 1;
 let totalPage = 10;
 
-async function onMount(setReviewState, navigate) {
-  let newReviewState = {};
+async function onMount(setNoticeState, navigate) {
+  let newnoticeState = {};
 
   //로그인 과정
   await axios.post(BACKEND_URL + "/auth/login", {
@@ -20,16 +21,21 @@ async function onMount(setReviewState, navigate) {
     password: password,
   });
 
+  //유저가 관리자인지 확인
+  if (userId === "superuser") {
+    isAdmin = true;
+  }
+
   //스터디 공지 리스트 가져옴
   await axios
     .get(BACKEND_URL + "/posts/", {
       params: {
         pageNo: pageNo,
-        admin: false,
+        admin: true,
       },
     })
     .then((res) => {
-      newReviewState.list = res.data.items;
+      newnoticeState.list = res.data.items;
       totalPage = res.data.totalPage;
     })
     .catch((err) => {
@@ -39,13 +45,13 @@ async function onMount(setReviewState, navigate) {
     });
 
   //state에 반영
-  setReviewState(newReviewState);
+  setNoticeState(newnoticeState);
 }
 
-export default function Review() {
+export default function Notice() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [reviewState, setReviewState] = useState({
+  const [noticeState, setNoticeState] = useState({
     list: [],
   });
   const [postState, setPostState] = useState({});
@@ -54,27 +60,29 @@ export default function Review() {
 
   let postEditBtn;
   let postCreateBtn;
-  postEditBtn = (
-    <a
-      className="btn btn-secondary mb-2 me-3"
-      href={"/review/edit/" + postState.id}
-    >
-      수정
-    </a>
-  );
-  postCreateBtn = (
-    <a className="btn btn-secondary mb-2" href={"/review/create/"}>
-      작성
-    </a>
-  );
+  if (isAdmin) {
+    postEditBtn = (
+      <a
+        className="btn btn-secondary mb-2 me-3"
+        href={"/notice/edit/" + postState.id}
+      >
+        수정
+      </a>
+    );
+    postCreateBtn = (
+      <a className="btn btn-secondary mb-2" href={"/notice/create/"}>
+        작성
+      </a>
+    );
+  }
 
   useEffect(() => {
-    onMount(setReviewState, navigate);
+    onMount(setNoticeState, navigate);
   }, [navigate]);
 
   const postList = [];
-  for (let i = 0; i < reviewState.list.length; i++) {
-    const createdDate = new Date(reviewState.list[i].createdDate);
+  for (let i = 0; i < noticeState.list.length; i++) {
+    const createdDate = new Date(noticeState.list[i].createdDate);
     const date = createdDate.toLocaleDateString();
     const time = createdDate.toLocaleTimeString();
     postList.push(
@@ -83,7 +91,7 @@ export default function Review() {
         href="/"
         onClick={(e) => {
           e.preventDefault();
-          setPostState(reviewState.list[i]);
+          setPostState(noticeState.list[i]);
         }}
         key={i}
         data-bs-toggle="offcanvas"
@@ -92,11 +100,11 @@ export default function Review() {
         <div className="d-flex flex-md-row flex-column">
           <div className="flex-grow-1">
             <strong>제목: </strong>
-            {reviewState.list[i].title}
+            {noticeState.list[i].title}
           </div>
           <div className="me-3">
             <strong className="text-nowrap">작성자: </strong>
-            {reviewState.list[i].userId}
+            {noticeState.list[i].userId}
           </div>
           <div className=" text-muted">
             <small className="text-nowrap">{date + " " + time}</small>
@@ -116,11 +124,11 @@ export default function Review() {
           src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
           alt="headerImg"
         />
-        <div className="base-header-title">Review</div>
+        <div className="base-header-title">Notice</div>
       </div>
 
       <div className="container">
-        <div className="notice-list-title">동아리 리뷰</div>
+        <div className="notice-list-title">공지사항</div>
         <div>
           <div className="list-group">{postList}</div>
         </div>

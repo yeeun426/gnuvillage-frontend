@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { StudyNoticeCreateStyle } from "../styles/studyNoticeCreateStyled";
 import axios from "axios";
 import PostForm from "../components/PostForm";
 
 const BACKEND_URL = "http://114.206.145.160:3000";
-let userId = "testid1";
+let userId = "superuser";
 let password = "testpw123";
 let token;
-let groupId;
 
 async function onMount(navigate) {
   //로그인 과정
@@ -22,13 +21,11 @@ async function onMount(navigate) {
       token = res.data;
     });
 
-  //그룹 정보 조회
-  await axios.get(BACKEND_URL + "/groups/" + groupId).catch((err) => {
-    if (err.response.data.statusCode === 404) {
-      navigate("/", { replace: true });
-      alert("존재하지 않는 스터디입니다.");
-    }
-  });
+  //관리자 아니면 뒤로가기
+  if (userId !== "superuser") {
+    navigate(-1);
+    alert("권한이 없습니다.");
+  }
 }
 
 function onSubmit(e, navigate) {
@@ -39,7 +36,7 @@ function onSubmit(e, navigate) {
   };
 
   axios
-    .post(BACKEND_URL + "/posts/ga/" + groupId, newPost, {
+    .post(BACKEND_URL + "/posts/a/", newPost, {
       headers: { Authorization: "Bearer " + token },
     })
     .then((res) => {
@@ -54,13 +51,12 @@ function onSubmit(e, navigate) {
     });
 }
 
-export default function StudyNoticeCreate() {
+export default function NoticeCreate() {
   const navigate = useNavigate();
-  groupId = useParams().groupId;
 
   useEffect(() => {
     onMount(navigate);
-  }, []);
+  }, [navigate]);
 
   return (
     <StudyNoticeCreateStyle>
@@ -72,11 +68,11 @@ export default function StudyNoticeCreate() {
           src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
           alt="headerImg"
         />
-        <div className="base-header-title">Study notice</div>
+        <div className="base-header-title">Notice</div>
       </div>
 
       <div className="container">
-        <div className="base-title">스터디 공지 작성</div>
+        <div className="base-title">공지 작성</div>
         <PostForm
           onSubmit={(e) => {
             onSubmit(e, navigate);

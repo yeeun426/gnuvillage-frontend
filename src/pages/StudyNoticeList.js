@@ -5,7 +5,7 @@ import { StudyNoticeListStyle } from "../styles/studyNoticeListStyled";
 import axios from "axios";
 import Pagination from "../components/Pagination";
 
-const BACKEND_URL = "http://203.253.76.182";
+const BACKEND_URL = "http://114.206.145.160:3000";
 let userId = "testid1";
 let password = "testpw123";
 let token;

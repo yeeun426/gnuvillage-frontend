@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { StudyNoticeEditStyle } from "../styles/studyNoticeEditStyled";
 import axios from "axios";
-import Pagination from "../components/Pagination";
 import PostForm from "../components/PostForm";
 
 const BACKEND_URL = "http://114.206.145.160:3000";
-let userId = "testid1";
+let userId = "superuser";
 let password = "testpw123";
 let token;
-let groupId;
 let postId;
 
 async function onMount(setPostState, navigate) {
@@ -26,22 +24,9 @@ async function onMount(setPostState, navigate) {
       token = res.data;
     });
 
-  //그룹 정보 조회
-  await axios
-    .get(BACKEND_URL + "/groups/" + groupId)
-    .then((res) => {
-      newPostState.name = res.data.name;
-    })
-    .catch((err) => {
-      if (err.response.data.statusCode === 404) {
-        navigate("/", { replace: true });
-        alert("존재하지 않는 스터디입니다.");
-      }
-    });
-
   //포스트 조회
   await axios
-    .get(BACKEND_URL + "/posts/g/" + groupId + "/" + postId, {
+    .get(BACKEND_URL + "/posts/" + postId, {
       headers: { Authorization: "Bearer " + token },
     })
     .then((res) => {
@@ -66,7 +51,7 @@ async function onMount(setPostState, navigate) {
   setPostState(newPostState);
 }
 
-function onSubmit(e) {
+function onSubmit(e, navigate) {
   e.preventDefault();
   const newPost = {
     title: e.target.title.value,
@@ -74,12 +59,13 @@ function onSubmit(e) {
   };
 
   axios
-    .patch(BACKEND_URL + "/posts/g/" + groupId + "/" + postId, newPost, {
+    .patch(BACKEND_URL + "/posts/" + postId, newPost, {
       headers: { Authorization: "Bearer " + token },
     })
     .then((res) => {
       console.log(res.data);
       alert("수정 완료");
+      navigate(-1);
     })
     .catch((err) => {
       if (err.response.data.statusCode === 400) {
@@ -88,10 +74,9 @@ function onSubmit(e) {
     });
 }
 
-export default function StudyNoticeEdit() {
+export default function ReviewEdit() {
   const navigate = useNavigate();
   const [postState, setPostState] = useState({});
-  groupId = useParams().groupId;
   postId = useParams().postId;
 
   useEffect(() => {
@@ -108,16 +93,18 @@ export default function StudyNoticeEdit() {
           src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
           alt="headerImg"
         />
-        <div className="base-header-title">Study notice</div>
+        <div className="base-header-title">Review</div>
       </div>
 
       <div className="container">
-        <div className="base-title">스터디 공지 수정</div>
+        <div className="base-title">동아리 리뷰 수정</div>
         <div>
           <PostForm
             title={postState.title}
             content={postState.content}
-            onSubmit={onSubmit}
+            onSubmit={(e) => {
+              onSubmit(e, navigate);
+            }}
           ></PostForm>
         </div>
       </div>
