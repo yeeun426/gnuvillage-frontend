@@ -27,7 +27,7 @@ function LogIn() {
     const data = new FormData(event.currentTarget);
 
     axios
-    .post("http://203.253.76.182/auth/login",{
+    .post("http://114.206.145.160:3000/auth/login",{
       id: data.get("id"),
       password: data.get("password"),
     })
