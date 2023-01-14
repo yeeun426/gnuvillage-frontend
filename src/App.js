@@ -7,6 +7,8 @@ import Main from "./pages/Main";
 import Introduction from "./pages/Introduction";
 import History from "./pages/History";
 import Review from "./pages/Review";
+// import WriteReview from "./pages/WriteReview";
+import Study from "./pages/Study";
 import ReviewEdit from "./pages/ReviewEdit";
 import ReviewCreate from "./pages/ReviewCreate";
 import Recruit from "./pages/Recruit";
@@ -17,6 +19,7 @@ import StudyIntro from "./pages/StudyIntro";
 import LogIn from "./pages/LogIn";
 import StudyNotice from "./pages/StudyNotice";
 import StudyResults from "./pages/StudyResults";
+import Signup from './pages/SignUp'
 import StudyNoticeEdit from "./pages/StudyNoticeEdit";
 import StudyNoticeCreate from "./pages/StudyNoticeCreate";
 import Notice from "./pages/Notice";
@@ -37,11 +40,13 @@ function App() {
         <Route path="/review/edit" element={<ReviewEdit />}></Route>
         <Route path="/review/create" element={<ReviewCreate />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/study" element={<Study />}></Route>
         <Route path="/recruit" element={<Recruit />}></Route>
         <Route path="/recruit/Detail" element={<RecruitDetail />}></Route>
         <Route path="/mypage" element={<Mypage />}></Route>
-        <Route path="/study-notice/c" element={<StudyNoticeList />}></Route>
-        <Route path="/study-intro/c" element={<StudyIntro />}></Route>
+        {/* <Route path="/study-notice/0" element={<StudyNoticeList />}></Route>
+        <Route path="/study-intro/0" element={<StudyIntro />}></Route> */}
         <Route path="/study-notice" element={<StudyNotice />}></Route>
         <Route
           path="/study-notice/:groupId/edit/:postId"
@@ -56,6 +61,10 @@ function App() {
           element={<StudyNoticeList />}
         ></Route>
         <Route path="/study-results" element={<StudyResults />}></Route>
+
+        {/* <Route index element={<Mypage />}></Route> */}
+        {/* <Route index element={<Review />}></Route> */}
+        {/* <Route index element={<WriteReview />}></Route> */}
       </Routes>
     </div>
   );

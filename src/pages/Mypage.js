@@ -4,6 +4,11 @@ import { MypageStyle } from "../styles/mypageStyled";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const onLogout = () => {
+  sessionStorage.removeItem('id')
+  document.location.href = '/'
+}
+
 const BACKEND_URL = "http://114.206.145.160:3000";
 let userId = "testid1";
 let password = "testpw123";
@@ -200,6 +205,9 @@ export default function Mypage() {
                 <div className="d-md-block d-none">개인정보 수정</div>
                 <div className="d-md-none d-block">개인정보</div>
               </button>
+            </div>
+            <div>
+              <button className="logout" onClick={onLogout}>로그아웃</button>
             </div>
           </div>
           <div className="tab-content flex-fill" id="tabs-tabContent">
