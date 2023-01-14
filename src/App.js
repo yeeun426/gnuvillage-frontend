@@ -9,6 +9,8 @@ import History from "./pages/History";
 import Review from "./pages/Review";
 import WriteReview from "./pages/WriteReview";
 import Study from "./pages/Study";
+import ReviewEdit from "./pages/ReviewEdit";
+import ReviewCreate from "./pages/ReviewCreate";
 import Recruit from "./pages/Recruit";
 import RecruitDetail from "./pages/RecruitDetail";
 import Mypage from "./pages/Mypage";
@@ -18,6 +20,11 @@ import LogIn from "./pages/LogIn";
 import StudyNotice from "./pages/StudyNotice";
 import StudyResults from "./pages/StudyResults";
 import Signup from './pages/SignUp'
+import StudyNoticeEdit from "./pages/StudyNoticeEdit";
+import StudyNoticeCreate from "./pages/StudyNoticeCreate";
+import Notice from "./pages/Notice";
+import NoticeEdit from "./pages/NoticeEdit";
+import NoticeCreate from "./pages/NoticeCreate";
 
 function App() {
   return (
@@ -26,8 +33,12 @@ function App() {
         <Route exact path="/" element={<Main />}></Route>
         <Route path="/intro" element={<Introduction />}></Route>
         <Route path="/history" element={<History />}></Route>
+        <Route path="/notice" element={<Notice />}></Route>
+        <Route path="/notice/edit/:postId" element={<NoticeEdit />}></Route>
+        <Route path="/notice/create" element={<NoticeCreate />}></Route>
         <Route path="/review" element={<Review />}></Route>
-        <Route path="/review/write" element={<WriteReview />}></Route>
+        <Route path="/review/edit" element={<ReviewEdit />}></Route>
+        <Route path="/review/create" element={<ReviewCreate />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/study" element={<Study />}></Route>
@@ -37,6 +48,14 @@ function App() {
         <Route path="/study-notice/0" element={<StudyNoticeList />}></Route>
         <Route path="/study-intro/0" element={<StudyIntro />}></Route>
         <Route path="/study-notice" element={<StudyNotice />}></Route>
+        <Route
+          path="/study-notice/:groupId/edit/:postId"
+          element={<StudyNoticeEdit />}
+        ></Route>
+        <Route
+          path="/study-notice/:groupId/create"
+          element={<StudyNoticeCreate />}
+        ></Route>
         <Route
           path="/study-notice/:groupId"
           element={<StudyNoticeList />}

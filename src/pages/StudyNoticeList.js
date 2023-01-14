@@ -5,7 +5,7 @@ import { StudyNoticeListStyle } from "../styles/studyNoticeListStyled";
 import axios from "axios";
 import Pagination from "../components/Pagination";
 
-const BACKEND_URL = "http://203.253.76.182";
+const BACKEND_URL = "http://114.206.145.160:3000";
 let userId = "testid1";
 let password = "testpw123";
 let token;
@@ -91,13 +91,27 @@ export default function StudyNoticeList() {
   let postEditBtn;
   let postCreateBtn;
   if (isGroupAdmin) {
-    postEditBtn = <button className="btn btn-secondary mb-2 me-3">수정</button>;
-    postCreateBtn = <button className="btn btn-secondary mb-2">작성</button>;
+    postEditBtn = (
+      <a
+        className="btn btn-secondary mb-2 me-3"
+        href={"/study-notice/" + groupId + "/edit/" + postState.id}
+      >
+        수정
+      </a>
+    );
+    postCreateBtn = (
+      <a
+        className="btn btn-secondary mb-2"
+        href={"/study-notice/" + groupId + "/create"}
+      >
+        작성
+      </a>
+    );
   }
 
   useEffect(() => {
     onMount(setStudyState, navigate);
-  }, []);
+  }, [navigate]);
 
   const postList = [];
   for (let i = 0; i < studyState.list.length; i++) {
@@ -107,7 +121,11 @@ export default function StudyNoticeList() {
     postList.push(
       <a
         className="list-group-item list-group-item-action"
-        onClick={() => setPostState(studyState.list[i])}
+        href="/"
+        onClick={(e) => {
+          e.preventDefault();
+          setPostState(studyState.list[i]);
+        }}
         key={i}
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasExample"
@@ -133,13 +151,13 @@ export default function StudyNoticeList() {
     <StudyNoticeListStyle>
       <Navbar />
 
-      <div className="notice-list-header">
+      <div className="base-header">
         <img
-          className="notice-list-header-img"
+          className="base-header-img"
           src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
           alt="headerImg"
         />
-        <div className="notice-list-header-title">Study notice</div>
+        <div className="base-header-title">Study notice</div>
       </div>
 
       <div className="container">

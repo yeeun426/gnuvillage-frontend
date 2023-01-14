@@ -4,7 +4,7 @@ import { MypageStyle } from "../styles/mypageStyled";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const BACKEND_URL = "http://203.253.76.182";
+const BACKEND_URL = "http://114.206.145.160:3000";
 let userId = "testid1";
 let password = "testpw123";
 let token;
@@ -47,7 +47,7 @@ async function onMount(setStudyState, setProfileState, navigate) {
             newStudyState.push({
               studyName: res.data.name,
               description: res.data.description,
-              url: "/team/" + res.data.id,
+              url: "/study-notice/" + res.data.id,
             });
           }
         })
@@ -151,13 +151,13 @@ export default function Mypage() {
   return (
     <MypageStyle>
       <Navbar />
-      <div className="mypage-header">
+      <div className="base-header">
         <img
-          className="mypage-header-img"
+          className="base-header-img"
           src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
           alt="headerImg"
         />
-        <div className="mypage-header-title">Mypage</div>
+        <div className="base-header-title">Mypage</div>
       </div>
       <div className="container">
         <div className="d-flex flex-md-row flex-column mt-5">
