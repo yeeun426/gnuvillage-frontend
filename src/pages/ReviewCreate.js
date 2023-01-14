@@ -6,20 +6,18 @@ import axios from "axios";
 import PostForm from "../components/PostForm";
 
 const BACKEND_URL = "http://114.206.145.160:3000";
-let userId = "superuser";
-let password = "testpw123";
 let token;
 
 async function onMount(navigate) {
-  //로그인 과정
-  await axios
-    .post(BACKEND_URL + "/auth/login", {
-      id: userId,
-      password: password,
-    })
-    .then(async (res) => {
-      token = res.data;
-    });
+  if (
+    sessionStorage["id"] === undefined ||
+    sessionStorage["token"] === undefined
+  ) {
+    navigate("/login", { replace: true });
+    alert("로그인이 필요합니다.");
+  } else {
+    token = sessionStorage["token"];
+  }
 }
 
 function onSubmit(e, navigate) {

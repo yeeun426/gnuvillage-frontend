@@ -6,26 +6,27 @@ import axios from "axios";
 import Pagination from "../components/Pagination";
 
 const BACKEND_URL = "http://114.206.145.160:3000";
-let userId = "testid1";
-let password = "testpw123";
+let userId;
 let token;
 let groupId;
 let isGroupAdmin = false;
 let pageNo = 1;
 let totalPage = 10;
+let sessionStorage = window.sessionStorage;
 
 async function onMount(setStudyState, navigate) {
   let newStudyState = {};
 
-  //로그인 과정
-  await axios
-    .post(BACKEND_URL + "/auth/login", {
-      id: userId,
-      password: password,
-    })
-    .then(async (res) => {
-      token = res.data;
-    });
+  if (
+    sessionStorage["id"] === undefined ||
+    sessionStorage["token"] === undefined
+  ) {
+    navigate("/login", { replace: true });
+    alert("로그인이 필요합니다.");
+  } else {
+    userId = sessionStorage["id"];
+    token = sessionStorage["token"];
+  }
 
   //그룹 정보 조회
   await axios
