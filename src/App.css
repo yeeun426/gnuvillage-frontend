@@ -11,6 +11,18 @@ a {
   color: black;
 }
 
+.find-id-message{
+  font-size: 17px;
+  font-family: Pretendard;
+  margin-top: 15px;
+}
+
+@media (min-width: 0px){
+  .css-nzinn5-MuiContainer-root {
+      max-width: 475px !important;
+  }
+}
+
 @font-face {
   font-family: 'Pretendard';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');

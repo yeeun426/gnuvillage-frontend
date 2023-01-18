@@ -31,6 +31,7 @@ function SignUp() {
       email: data.get("email"),
       phone: data.get("phone"),
     });
+    debugger;
 
     axios
     .post("http://114.206.145.160:3000/users", {
