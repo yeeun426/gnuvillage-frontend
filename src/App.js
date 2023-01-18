@@ -25,6 +25,8 @@ import StudyNoticeCreate from "./pages/StudyNoticeCreate";
 import Notice from "./pages/Notice";
 import NoticeEdit from "./pages/NoticeEdit";
 import NoticeCreate from "./pages/NoticeCreate";
+import FindPW from "./pages/FindPW";
+import FindID from "./pages/FindID";
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path="/review/edit" element={<ReviewEdit />}></Route>
         <Route path="/review/create" element={<ReviewCreate />}></Route>
         <Route path="/login" element={<LogIn />}></Route>
+        <Route path="/findId" element={<FindID />}></Route>
+        <Route path="/findPw" element={<FindPW />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/study" element={<Study />}></Route>
         <Route path="/recruit" element={<Recruit />}></Route>
