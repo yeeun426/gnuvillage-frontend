@@ -18,7 +18,7 @@ const LogoBoo = styled.img`
   object-fit: contain;
 `;
 
-function LogIn() {
+function FindPW() {
   const [user, setUser] = useState('');
   let sessionStorage = window.sessionStorage;
 
@@ -27,10 +27,7 @@ function LogIn() {
     const data = new FormData(event.currentTarget);
 
     axios
-    .post("http://114.206.145.160:3000/auth/login",{
-      id: data.get("id"),
-      password: data.get("password"),
-    })
+    .get("http://114.206.145.160:3000/user/p")
     .then((res) => {
       console.log(res)
       console.log(res.data)
@@ -68,7 +65,7 @@ function LogIn() {
           GNUVILLAGE
         </Typography>
         <Typography component="h1" variant="h5">
-          LOGIN
+          비밀번호 찾기
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -88,12 +85,7 @@ function LogIn() {
             fullWidth
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="아이디 저장"
-          />
           <Button
-            type="submit"
             variant="contained"
             fullWidth
             sx={{ mt: 3, mb: 2 }}
@@ -102,10 +94,7 @@ function LogIn() {
           </Button>
           <Grid container justifyContent="space-evenly">
             <Grid item>
-              <Link href="/FindID">아이디 찾기</Link>
-            </Grid>
-            <Grid item>
-              <Link href="/FindPW">비밀번호 찾기</Link>
+              <Link href="/findId">아이디 찾기</Link>
             </Grid>
           </Grid>
         </Box>
@@ -114,4 +103,4 @@ function LogIn() {
   );
 }
 
-export default LogIn;
+export default FindPW;
