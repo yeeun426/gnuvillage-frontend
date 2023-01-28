@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { MainStyle } from "../styles/styled";
 import Footer from "../components/Footer";
 import mainImg from "../assets/images/main-img.jpg";
 import { BsArrowRight } from "react-icons/bs";
 import Gnuvil from "../assets/images/Gnuvil.png";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
@@ -12,11 +13,61 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 
+const BACKEND_URL = "http://114.206.145.160:3000";
+
 SwiperCore.use([Navigation]);
+
+async function onMount(setReviewState, navigate) {
+  let newReviewState = {};
+
+  //스터디 공지 리스트 가져옴
+  await axios
+    .get(BACKEND_URL + "/posts/", {
+      params: {
+        pageNo: 1,
+        admin: false,
+      },
+    })
+    .then((res) => {
+      newReviewState.list = res.data.items;
+    });
+
+  //state에 반영
+  setReviewState(newReviewState);
+}
 
 function Main() {
   console.log(sessionStorage);
-  
+  const navigate = useNavigate();
+  const [reviewState, setReviewState] = useState({
+    list: [],
+  });
+  const reviewSlideList = [];
+
+  useEffect(() => {
+    onMount(setReviewState, navigate);
+  }, [navigate]);
+
+  for (let i = 0; i < reviewState.list.length; i++) {
+    const createdDate = new Date(reviewState.list[i].createdDate);
+    const date = createdDate.toLocaleDateString();
+    const time = createdDate.toLocaleTimeString();
+    reviewSlideList.push(
+      <SwiperSlide>
+        <div className="main-review-items">
+          <div className="main-review-info">
+            <div>{date + " " + time}</div>
+            <div>작성자: {reviewState.list[i].userId}</div>
+          </div>
+          <div className="main-review-txt">
+            <strong>제목: {reviewState.list[i].title}</strong>
+            <div>{reviewState.list[i].content}</div>
+          </div>
+        </div>
+      </SwiperSlide>
+    );
+  }
+
   return (
     <MainStyle>
       <Navbar />
@@ -101,60 +152,7 @@ function Main() {
 
           <div className="main-review-container">
             <Swiper spaceBetween={50} slidesPerView={4} navigation>
-              <SwiperSlide>
-                <div className="main-review-items">
-                  <div className="main-review-info">
-                    <div>2021-2학기</div>
-                    <div>JAVA</div>
-                  </div>
-                  <div className="main-review-txt">후기</div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main-review-items">
-                  <div className="main-review-info">
-                    <div>2021-2학기</div>
-                    <div>JAVA</div>
-                  </div>
-                  <div className="main-review-txt">후기</div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main-review-items">
-                  <div className="main-review-info">
-                    <div>2021-2학기</div>
-                    <div>JAVA</div>
-                  </div>
-                  <div className="main-review-txt">후기</div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main-review-items">
-                  <div className="main-review-info">
-                    <div>2021-2학기</div>
-                    <div>JAVA</div>
-                  </div>
-                  <div className="main-review-txt">후기</div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main-review-items">
-                  <div className="main-review-info">
-                    <div>2021-2학기</div>
-                    <div>JAVA</div>
-                  </div>
-                  <div className="main-review-txt">후기</div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="main-review-items">
-                  <div className="main-review-info">
-                    <div>2021-2학기</div>
-                    <div>JAVA</div>
-                  </div>
-                  <div className="main-review-txt">후기</div>
-                </div>
-              </SwiperSlide>
+              {reviewSlideList}
             </Swiper>
           </div>
         </div>
