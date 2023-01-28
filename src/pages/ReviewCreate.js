@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import Navbar from "../components/Navbar";
+import BasePage from "../components/BasePage";
 import { useNavigate } from "react-router-dom";
-import { StudyNoticeCreateStyle } from "../styles/studyNoticeCreateStyled";
 import axios from "axios";
 import PostForm from "../components/PostForm";
 
@@ -51,26 +50,12 @@ export default function ReviewCreate() {
   }, [navigate]);
 
   return (
-    <StudyNoticeCreateStyle>
-      <Navbar />
-
-      <div className="base-header">
-        <img
-          className="base-header-img"
-          src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
-          alt="headerImg"
-        />
-        <div className="base-header-title">Review</div>
-      </div>
-
-      <div className="container">
-        <div className="base-title">동아리 리뷰 작성</div>
-        <PostForm
-          onSubmit={(e) => {
-            onSubmit(e, navigate);
-          }}
-        ></PostForm>
-      </div>
-    </StudyNoticeCreateStyle>
+    <BasePage headerTitle="Review" title="동아리 리뷰 작성">
+      <PostForm
+        onSubmit={(e) => {
+          onSubmit(e, navigate);
+        }}
+      ></PostForm>
+    </BasePage>
   );
 }

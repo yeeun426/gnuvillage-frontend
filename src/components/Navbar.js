@@ -192,7 +192,7 @@ function Navbar() {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/study-results">
+                    <a className="dropdown-item" href="/review">
                       <div>동아리후기</div>
                     </a>
                   </li>
