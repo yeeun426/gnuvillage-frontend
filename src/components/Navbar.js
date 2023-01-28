@@ -93,14 +93,14 @@ function Navbar() {
 
       <nav className="navbar navbar-dark bg-opacity-50 navbar-expand-lg bg-dark fixed-top d-lg-none d-block">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <div className="navbar-brand" href="#">
             <div className="navbar-logo">
               <Link to="/">
                 <img src={logo} alt="logo" style={{ height: "40px" }} />
               </Link>
               <div>GNUVILLAGE</div>
             </div>
-          </a>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
