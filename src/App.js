@@ -27,6 +27,7 @@ import NoticeEdit from "./pages/NoticeEdit";
 import NoticeCreate from "./pages/NoticeCreate";
 import FindPW from "./pages/FindPW";
 import FindID from "./pages/FindID";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="/recruit/Detail" element={<RecruitDetail />}></Route>
         <Route path="/mypage" element={<Mypage />}></Route>
         <Route path="/test" element={<StudyIntro />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
 
         {/* <Route path="/study-notice/0" element={<StudyNoticeList />}></Route>
         <Route path="/study-intro/0" element={<StudyIntro />}></Route> */}
