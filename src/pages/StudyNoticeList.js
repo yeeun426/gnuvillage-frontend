@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import BasePage from "../components/BasePage";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { StudyNoticeListStyle } from "../styles/studyNoticeListStyled";
 import axios from "axios";
 import Pagination from "../components/Pagination";
 
@@ -149,57 +148,47 @@ export default function StudyNoticeList() {
   }
 
   return (
-    <StudyNoticeListStyle>
-      <Navbar />
-
-      <div className="base-header">
-        <img
-          className="base-header-img"
-          src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
-          alt="headerImg"
-        />
-        <div className="base-header-title">Study notice</div>
-      </div>
-
-      <div className="container">
-        <div className="notice-list-title">'{studyState.name}' 공지사항</div>
+    <div>
+      <BasePage
+        headerTitle="Study notice"
+        title={studyState.name + " 공지사항"}
+      >
         <div>
           <div className="list-group">{postList}</div>
         </div>
         <Pagination pageNo={pageNo} totalPage={totalPage}></Pagination>
         {postCreateBtn}
-      </div>
-
-      <div
-        className="offcanvas offcanvas-end"
-        tabIndex="-1"
-        id="offcanvasExample"
-      >
-        <div className="offcanvas-header">
-          <div className="d-flex flex-column flex-fill align-items-start">
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="offcanvas"
-            ></button>
-            <h5 className="offcanvas-title mt-3" id="postOffcanvas">
-              {postState.title}
-            </h5>
-            <div>
-              <small className="me-2">작성자: {postState.userId}</small>
-              <small>
-                작성일:{" "}
-                {new Date(postState.createdDate).toLocaleDateString() +
-                  " " +
-                  new Date(postState.createdDate).toLocaleTimeString()}
-              </small>
+        <div
+          className="offcanvas offcanvas-end"
+          tabIndex="-1"
+          id="offcanvasExample"
+        >
+          <div className="offcanvas-header">
+            <div className="d-flex flex-column flex-fill align-items-start">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="offcanvas"
+              ></button>
+              <h5 className="offcanvas-title mt-3" id="postOffcanvas">
+                {postState.title}
+              </h5>
+              <div>
+                <small className="me-2">작성자: {postState.userId}</small>
+                <small>
+                  작성일:{" "}
+                  {new Date(postState.createdDate).toLocaleDateString() +
+                    " " +
+                    new Date(postState.createdDate).toLocaleTimeString()}
+                </small>
+              </div>
             </div>
           </div>
+          <hr></hr>
+          <div className="offcanvas-body">{postState.content}</div>
+          <div className="offcanvas-button ms-2">{postEditBtn}</div>
         </div>
-        <hr></hr>
-        <div className="offcanvas-body">{postState.content}</div>
-        <div className="offcanvas-button">{postEditBtn}</div>
-      </div>
-    </StudyNoticeListStyle>
+      </BasePage>
+    </div>
   );
 }

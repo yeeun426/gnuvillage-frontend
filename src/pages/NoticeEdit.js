@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import BasePage from "../components/BasePage";
 import { useNavigate, useParams } from "react-router-dom";
-import { StudyNoticeEditStyle } from "../styles/studyNoticeEditStyled";
 import axios from "axios";
 import PostForm from "../components/PostForm";
 
@@ -90,30 +89,14 @@ export default function NoticeEdit() {
   }, [navigate]);
 
   return (
-    <StudyNoticeEditStyle>
-      <Navbar />
-
-      <div className="base-header">
-        <img
-          className="base-header-img"
-          src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
-          alt="headerImg"
-        />
-        <div className="base-header-title">Notice</div>
-      </div>
-
-      <div className="container">
-        <div className="base-title">공지 수정</div>
-        <div>
-          <PostForm
-            title={postState.title}
-            content={postState.content}
-            onSubmit={(e) => {
-              onSubmit(e, navigate);
-            }}
-          ></PostForm>
-        </div>
-      </div>
-    </StudyNoticeEditStyle>
+    <BasePage headerTitle="Notice" title="공지 수정">
+      <PostForm
+        title={postState.title}
+        content={postState.content}
+        onSubmit={(e) => {
+          onSubmit(e, navigate);
+        }}
+      ></PostForm>
+    </BasePage>
   );
 }

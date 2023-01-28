@@ -1,14 +1,13 @@
-import React from "react";
 import styled from "styled-components";
-
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import StudyBtn from "../components/StudyBtn";
-import StudyResultItem from "../components/StudyResultItem";
-
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 import { IntroductionStyle } from "../styles/styled";
+import "swiper/css"; //basic
+import "swiper/css/navigation";
+import axios from "axios";
 
 import study1 from "../assets/images/study_image_1.jpg";
 import study2 from "../assets/images/study_image_2.jpg";
@@ -20,7 +19,7 @@ const StudyStyle = styled.div`
     display: flex;
     gap: 50px;
   }
-  
+
   .study-act-image img {
     width: 300px;
   }
@@ -29,7 +28,7 @@ const StudyStyle = styled.div`
     border: none;
     border-radius: 30px;
     padding: 5px 30px;
-    font-family: 'Pretendard';
+    font-family: "Pretendard";
     color: white;
     background-color: #73737373;
     font-size: 14px;
@@ -68,17 +67,43 @@ const StudyButtons = styled.div`
   flex-wrap: wrap;
 `;
 
+const BACKEND_URL = "http://114.206.145.160:3000";
+
+async function onMount(setStudyListState) {
+  let newStudyListState = {};
+
+  //스터디 그룹들을 조회
+  await axios
+    .get(BACKEND_URL + "/groups/", {
+      params: { pageSize: 100 },
+    })
+    .then((res) => {
+      newStudyListState = res.data.items;
+    });
+
+  setStudyListState(newStudyListState);
+}
+
 export default function Study() {
   const navigate = useNavigate();
+  const [studyListState, setStudyListState] = useState([]);
+  let studyList = [];
 
-  const studys1 = [
-    { id: 0, name: "C", url: "/study-intro/0" },
-    { id: 1, name: "JAVA", url: "/study-intro/1" },
-    { id: 2, name: "ALGORITHM", url: "/study-intro/2" },
-    { id: 3, name: "DATA SCIENCE", url: "/study-intro/3" },
-    { id: 4, name: "WEB basic", url: "/study-intro/4" },
-    { id: 5, name: "WEB development", url: "/study-intro/5" },
-  ];
+  for (let i = 0; i < studyListState.length; i++) {
+    studyList.push(
+      <StudyBtn
+        title={studyListState[i].name}
+        key={studyListState[i].id}
+        onClick={() => {
+          navigate("/study-intro/" + studyListState[i].id);
+        }}
+      />
+    );
+  }
+
+  useEffect(() => {
+    onMount(setStudyListState);
+  }, []);
 
   return (
     <StudyStyle>
@@ -97,33 +122,23 @@ export default function Study() {
 
       <StudyPage>
         <StudyTitle1>Introduction</StudyTitle1>
-        <StudyButtons>
-          {studys1.map((study) => {
-            return (
-              <StudyBtn
-                title={study.name}
-                key={study.id}
-                onClick={() => {
-                  navigate(study.url);
-                }}
-              />
-            );
-          })}
-        </StudyButtons>
+        <StudyButtons>{studyList}</StudyButtons>
 
         <hr />
         <br />
 
-        <div className = "study-title">
+        <div className="study-title">
           <StudyTitle1>활동 사진</StudyTitle1>
-          <Link to="/study-results"><button className="study-title-more">더보기 +</button></Link>
+          <Link to="/study-results">
+            <button className="study-title-more">더보기 +</button>
+          </Link>
         </div>
-          <div className = "study-act-image">
-            <img src={study1} alt="study1"/>
-            <img src={study2} alt="study1"/>
-            <img src={study3} alt="study1"/>
-            <img src={study5} alt="study1"/>
-          </div>
+        <div className="study-act-image">
+          <img src={study1} alt="study1" />
+          <img src={study2} alt="study1" />
+          <img src={study3} alt="study1" />
+          <img src={study5} alt="study1" />
+        </div>
       </StudyPage>
     </StudyStyle>
   );
