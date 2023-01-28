@@ -1,14 +1,10 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-
-import { IntroductionStyle } from "../styles/styled";
-
-import StudyResultItem from "../components/StudyResultItem";
-
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react"; // basic
+import styled from "styled-components";
+import { IntroductionStyle } from "../styles/styled";
+import StudyResultItem from "../components/StudyResultItem";
 
 const StudyResultsStyle = styled.div``;
 
@@ -23,6 +19,14 @@ const Pos = styled.div`
   align-content: flex-start;
   justify-content: flex-start;
   flex-flow: row wrap;
+`;
+
+const StudyTitle1 = styled.div`
+  font-size: 25px;
+  font-weight: bold;
+  text-align: left;
+  padding: 20px 0;
+  font-family: "Pretendard";
 `;
 
 export default function StudyResults() {
@@ -51,10 +55,29 @@ export default function StudyResults() {
           <StudyResultItem></StudyResultItem>
           <StudyResultItem></StudyResultItem>
           <StudyResultItem></StudyResultItem>
-          <StudyResultItem></StudyResultItem>
-          <StudyResultItem></StudyResultItem>
-          <StudyResultItem></StudyResultItem>
         </Pos>
+
+        <StudyTitle1>활동 사진</StudyTitle1>
+        <Swiper spaceBetween={30} slidesPerView={4} navigation loop={true}>
+          <SwiperSlide>
+            <StudyResultItem></StudyResultItem>
+          </SwiperSlide>
+          <SwiperSlide>
+            <StudyResultItem></StudyResultItem>
+          </SwiperSlide>
+          <SwiperSlide>
+            <StudyResultItem></StudyResultItem>
+          </SwiperSlide>
+          <SwiperSlide>
+            <StudyResultItem></StudyResultItem>
+          </SwiperSlide>
+          <SwiperSlide>
+            <StudyResultItem></StudyResultItem>
+          </SwiperSlide>
+          <SwiperSlide>
+            <StudyResultItem></StudyResultItem>
+          </SwiperSlide>
+        </Swiper>
       </StudyResultsPage>
     </StudyResultsStyle>
   );

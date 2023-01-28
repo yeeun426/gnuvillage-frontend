@@ -49,6 +49,8 @@ function App() {
         <Route path="/recruit" element={<Recruit />}></Route>
         <Route path="/recruit/Detail" element={<RecruitDetail />}></Route>
         <Route path="/mypage" element={<Mypage />}></Route>
+        <Route path="/test" element={<StudyIntro />}></Route>
+
         {/* <Route path="/study-notice/0" element={<StudyNoticeList />}></Route>
         <Route path="/study-intro/0" element={<StudyIntro />}></Route> */}
         <Route path="/study-notice" element={<StudyNotice />}></Route>

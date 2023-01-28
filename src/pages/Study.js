@@ -1,20 +1,41 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
+import Navbar from "../components/Navbar";
 import StudyBtn from "../components/StudyBtn";
+import StudyResultItem from "../components/StudyResultItem";
+
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { IntroductionStyle } from "../styles/styled";
 
-import { Swiper, SwiperSlide } from "swiper/react"; // basic
-import SwiperCore, { Navigation, Pagination } from "swiper";
-import "swiper/css"; //basic
-import "swiper/css/navigation";
 
-import StudyResultItem from "../components/StudyResultItem";
+const StudyStyle = styled.div`
+  .study-act-image {
+    display: flex;
+  }
+  
+  .study-title-more {
+    border: none;
+    border-radius: 30px;
+    padding: 5px 30px;
+    font-family: 'Pretendard';
+    color: white;
+    background-color: #73737373;
+    font-size: 14px;
+  }
 
-const StudyStyle = styled.div``;
+  .study-title-more:hover {
+    background-color: #263f71;
+  }
+
+  .study-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
 
 const StudyPage = styled.div`
   position: relative;
@@ -27,20 +48,6 @@ const StudyTitle1 = styled.div`
   text-align: left;
   padding: 20px 0;
   font-family: "Pretendard";
-`;
-
-const StudyTitle2 = styled.div`
-  font-size: 20px;
-  text-align: left;
-  padding: 20px 30px 0;
-  font-family: "Pretendard";
-`;
-
-const StudyTitle3 = styled.div`
-  font-size: 15px;
-  text-align: left;
-  padding: 0 30px;
-  font-family: "Pretendard-Thin";
 `;
 
 const StudyButtons = styled.div`
@@ -98,27 +105,17 @@ export default function Study() {
         <hr />
         <br />
 
-        <StudyTitle1>Results</StudyTitle1>
-        <Swiper spaceBetween={50} slidesPerView={4} navigation loop={true}>
-          <SwiperSlide>
+        <div className = "study-title">
+          <StudyTitle1>활동 사진</StudyTitle1>
+          <Link to="/study-results"><button className="study-title-more">더보기 +</button></Link>
+        </div>
+          <div className = "study-act-image">
             <StudyResultItem></StudyResultItem>
-          </SwiperSlide>
-          <SwiperSlide>
             <StudyResultItem></StudyResultItem>
-          </SwiperSlide>
-          <SwiperSlide>
             <StudyResultItem></StudyResultItem>
-          </SwiperSlide>
-          <SwiperSlide>
             <StudyResultItem></StudyResultItem>
-          </SwiperSlide>
-          <SwiperSlide>
             <StudyResultItem></StudyResultItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            <StudyResultItem></StudyResultItem>
-          </SwiperSlide>
-        </Swiper>
+          </div>
       </StudyPage>
     </StudyStyle>
   );
