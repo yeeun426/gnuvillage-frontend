@@ -55,8 +55,12 @@ function Navbar() {
                 <Link to="/history" style={{ textDecoration: "none" }}>
                   <div>히스토리</div>
                 </Link>
-                <div>활동사진</div>
-                <div>운영진 연락처</div>
+                <Link to="/study-results" style={{ textDecoration: "none" }}>
+                  <div>활동사진</div>
+                </Link>
+                <Link to="/contact" style={{ textDecoration: "none" }}>
+                  <div>운영진 연락처</div>
+                </Link>
               </div>
 
               <div className="navbar-modal-study">
