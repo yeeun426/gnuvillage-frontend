@@ -10,12 +10,21 @@ import { useNavigate } from "react-router-dom";
 
 import { IntroductionStyle } from "../styles/styled";
 
+import study1 from "../assets/images/study_image_1.jpg";
+import study2 from "../assets/images/study_image_2.jpg";
+import study3 from "../assets/images/study_image_12.jpg";
+import study5 from "../assets/images/study_image_9.jpg";
 
 const StudyStyle = styled.div`
   .study-act-image {
     display: flex;
+    gap: 50px;
   }
   
+  .study-act-image img {
+    width: 300px;
+  }
+
   .study-title-more {
     border: none;
     border-radius: 30px;
@@ -110,11 +119,10 @@ export default function Study() {
           <Link to="/study-results"><button className="study-title-more">더보기 +</button></Link>
         </div>
           <div className = "study-act-image">
-            <StudyResultItem></StudyResultItem>
-            <StudyResultItem></StudyResultItem>
-            <StudyResultItem></StudyResultItem>
-            <StudyResultItem></StudyResultItem>
-            <StudyResultItem></StudyResultItem>
+            <img src={study1} alt="study1"/>
+            <img src={study2} alt="study1"/>
+            <img src={study3} alt="study1"/>
+            <img src={study5} alt="study1"/>
           </div>
       </StudyPage>
     </StudyStyle>
