@@ -1,7 +1,7 @@
 import { PieChart } from "react-minimal-pie-chart";
 
-export default function Pie() {
-  const data = [{ title: "100% 수료", value: 30, color: "#F6CB44" }];
+export default function Pie(props) {
+  const data = [{ title: "수료율", value: props.value, color: "#F6CB44" }];
 
   return (
     <PieChart
@@ -11,7 +11,7 @@ export default function Pie() {
       lineWidth={20}
       radius={10}
       animate
-      reveal={30}
+      reveal={props.value}
       background="Gainsboro"
       lengthAngle={360}
       rounded

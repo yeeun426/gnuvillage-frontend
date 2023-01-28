@@ -53,7 +53,7 @@ function Main() {
     const date = createdDate.toLocaleDateString();
     const time = createdDate.toLocaleTimeString();
     reviewSlideList.push(
-      <SwiperSlide>
+      <SwiperSlide key={i}>
         <div className="main-review-items">
           <div className="main-review-info">
             <div>{date + " " + time}</div>
