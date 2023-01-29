@@ -9,7 +9,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import axios from 'axios'; 
+import axios from 'axios';
 import React,{useState} from 'react'
 
 const LogoBoo = styled.img`
@@ -67,30 +67,30 @@ function FindPW() {
         <Typography component="h1" variant="h5">
           비밀번호 찾기
         </Typography>
+        <div>
+            GNUVILLAGE에 가입했던 이메일을 입력해주세요.<br/>
+            비밀번호 재설정 메일을 보내드립니다.
+        </div>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            label="ID"
-            name="id"
-            required
-            fullWidth
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            label="Password"
-            name="password"
-            type="password"
-            required
-            fullWidth
-            autoComplete="current-password"
-          />
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12}>
+            <TextField margin="normal" label="이름" name="name" required fullWidth />
+            </Grid>            
+                        
+            <Grid item xs={12}>
+                <TextField margin="normal" label="아이디" name="id" required fullWidth/>
+            </Grid>
+
+            <Grid item xs={12}>
+                <TextField margin="normal" label="이메일" name="email" required fullWidth/>
+            </Grid>
+          </Grid>
           <Button
             variant="contained"
             fullWidth
             sx={{ mt: 3, mb: 2 }}
           >
-            LOGIN
+            비밀번호 재설정하기
           </Button>
           <Grid container justifyContent="space-evenly">
             <Grid item>

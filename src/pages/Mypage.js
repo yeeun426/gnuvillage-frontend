@@ -5,9 +5,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const onLogout = () => {
-  sessionStorage.removeItem('id')
-  document.location.href = '/'
-}
+  sessionStorage.removeItem("id");
+  document.location.href = "/";
+};
 
 const BACKEND_URL = "http://114.206.145.160:3000";
 let userId = "testid1";
@@ -49,9 +49,15 @@ async function onMount(setStudyState, setProfileState, navigate) {
         .get(BACKEND_URL + "/groups/" + assignments[i].groupId)
         .then((res) => {
           if (res.data !== undefined) {
+            let groupProfile;
+            try {
+              groupProfile = JSON.parse(res.data.description).groupProfile;
+            } catch (e) {
+              groupProfile = res.data.description;
+            }
             newStudyState.push({
               studyName: res.data.name,
-              description: res.data.description,
+              groupProfile: groupProfile,
               url: "/study-notice/" + res.data.id,
             });
           }
@@ -143,7 +149,7 @@ export default function Mypage() {
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">{e.studyName}</h5>
-            <p className="card-text">{e.description}</p>
+            <p className="card-text">{e.groupProfile}</p>
             <a href={e.url} className="btn btn-outline-primary">
               팀 페이지 이동
             </a>
@@ -207,7 +213,9 @@ export default function Mypage() {
               </button>
             </div>
             <div>
-              <button className="logout" onClick={onLogout}>로그아웃</button>
+              <button className="logout" onClick={onLogout}>
+                로그아웃
+              </button>
             </div>
           </div>
           <div className="tab-content flex-fill" id="tabs-tabContent">

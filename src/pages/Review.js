@@ -6,19 +6,11 @@ import axios from "axios";
 import Pagination from "../components/Pagination";
 
 const BACKEND_URL = "http://114.206.145.160:3000";
-let userId = "superuser";
-let password = "testpw123";
 let pageNo = 1;
 let totalPage = 10;
 
 async function onMount(setReviewState, navigate) {
   let newReviewState = {};
-
-  //로그인 과정
-  await axios.post(BACKEND_URL + "/auth/login", {
-    id: userId,
-    password: password,
-  });
 
   //스터디 공지 리스트 가져옴
   await axios

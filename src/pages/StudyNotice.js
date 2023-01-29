@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,9 @@ import styled from "styled-components";
 import StudyBtn from "../components/StudyBtn";
 
 import { IntroductionStyle } from "../styles/styled";
+import axios from "axios";
+
+const BACKEND_URL = "http://114.206.145.160:3000";
 
 const StudyNoticeStyle = styled.div``;
 
@@ -38,17 +41,41 @@ const StudyButtons = styled.div`
   flex-wrap: wrap;
 `;
 
+async function onMount(setStudyNoticeState) {
+  let newStudyNoticeState = {};
+
+  //스터디 그룹들을 조회
+  await axios
+    .get(BACKEND_URL + "/groups/", {
+      params: { pageSize: 100 },
+    })
+    .then((res) => {
+      newStudyNoticeState = res.data.items;
+    });
+
+  setStudyNoticeState(newStudyNoticeState);
+}
+
 export default function StudyNotice() {
   const navigate = useNavigate();
+  const [studyState, setStudyNoticeState] = useState([]);
+  let studies = [];
 
-  const studys1 = [
-    { id: 0, name: "C", url: "/study-notice/0" },
-    { id: 1, name: "JAVA", url: "/study-notice/1" },
-    { id: 2, name: "ALGORITHM", url: "/study-notice/2" },
-    { id: 3, name: "DATA SCIENCE", url: "/study-notice/3" },
-    { id: 4, name: "WEB basic", url: "/study-notice/4" },
-    { id: 5, name: "WEB development", url: "/study-notice/5" },
-  ];
+  for (let i = 0; i < studyState.length; i++) {
+    studies.push(
+      <StudyBtn
+        title={studyState[i].name}
+        key={studyState[i].id}
+        onClick={() => {
+          navigate("/study-notice/" + studyState[i].id);
+        }}
+      />
+    );
+  }
+
+  useEffect(() => {
+    onMount(setStudyNoticeState);
+  }, []);
 
   return (
     <StudyNoticeStyle>
@@ -67,19 +94,7 @@ export default function StudyNotice() {
 
       <StudyNoticeMain>
         <StudyTitle1>스터디별 공지사항</StudyTitle1>
-        <StudyButtons>
-          {studys1.map((study) => {
-            return (
-              <StudyBtn
-                title={study.name}
-                key={study.id}
-                onClick={() => {
-                  navigate(study.url);
-                }}
-              />
-            );
-          })}
-        </StudyButtons>
+        <StudyButtons>{studies}</StudyButtons>
         <br />
       </StudyNoticeMain>
     </StudyNoticeStyle>

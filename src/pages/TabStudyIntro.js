@@ -19,12 +19,13 @@ const StudyText = styled.div`
   line-height: 1.6;
 `;
 
-export default function TabStudyIntro() {
+export default function TabStudyIntro(props) {
   return (
     <TabStudyIntroStyle>
       <StudyTitle2>주요 활동 내용</StudyTitle2>
       <StudyText>
-        1 상세 내용이 들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세
+        {props.mainActivity}
+        {/* 1 상세 내용이 들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세
         내용이 들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세 내용이
         들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세 내용이 들어갈
         자리입니다. 상세 내용이 들어갈 자리입니다.
@@ -45,12 +46,13 @@ export default function TabStudyIntro() {
         <br />
         9 상세 내용이 들어갈 자리입니다.
         <br />
-        10 상세 내용이 들어갈 자리입니다.
+        10 상세 내용이 들어갈 자리입니다. */}
       </StudyText>
 
       <StudyTitle2>진행방식</StudyTitle2>
       <StudyText>
-        1 상세 내용이 들어갈 자리입니다.
+        {props.activityStyle}
+        {/* 1 상세 내용이 들어갈 자리입니다.
         <br />
         2 상세 내용이 들어갈 자리입니다.
         <br />
@@ -68,12 +70,13 @@ export default function TabStudyIntro() {
         <br />
         9 상세 내용이 들어갈 자리입니다.
         <br />
-        10 상세 내용이 들어갈 자리입니다.
+        10 상세 내용이 들어갈 자리입니다. */}
       </StudyText>
 
       <StudyTitle2>커리큘럼</StudyTitle2>
       <StudyText>
-        1 상세 내용이 들어갈 자리입니다.
+        {props.curriculum}
+        {/* 1 상세 내용이 들어갈 자리입니다.
         <br />
         2 상세 내용이 들어갈 자리입니다.
         <br />
@@ -91,7 +94,7 @@ export default function TabStudyIntro() {
         <br />
         9 상세 내용이 들어갈 자리입니다.
         <br />
-        10 상세 내용이 들어갈 자리입니다.
+        10 상세 내용이 들어갈 자리입니다. */}
       </StudyText>
     </TabStudyIntroStyle>
   );

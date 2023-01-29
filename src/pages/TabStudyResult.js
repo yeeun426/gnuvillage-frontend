@@ -40,20 +40,21 @@ const Pos1 = styled.div`
   /* line-height: 1.6; */
 `;
 
-export default function TabStudyResult() {
+export default function TabStudyResult(props) {
   return (
     <TabStudyResultStyle>
-      <StudyTitle2>프로젝트 식</StudyTitle2>
+      <StudyTitle2>활동 결과</StudyTitle2>
       <StudyText>
-        1 상세 내용이 들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세
+        {props.result}
+        {/* 1 상세 내용이 들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세
         내용이 들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세 내용이
         들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세 내용이 들어갈
         자리입니다. 상세 내용이 들어갈 자리입니다.
         <br />
         2 상세 내용이 들어갈 자리입니다.
-        <br />3 상세 내용이 들어갈 자리입니다.
+        <br />3 상세 내용이 들어갈 자리입니다. */}
       </StudyText>
-      <Pos1>
+      {/* <Pos1>
         <ResultImg src={imgEx} alt="사진" />
         <StudyText>
           1 상세 내용이 들어갈 자리입니다. 상세 내용이 들어갈 자리입니다. 상세
@@ -66,8 +67,10 @@ export default function TabStudyResult() {
         </StudyText>
       </Pos1>
 
-      <StudyTitle2>세미나 식</StudyTitle2>
-      <Pie />
+      <StudyTitle2>세미나 식</StudyTitle2> */}
+      <div style={{ height: 700 }}>
+        <Pie value={props.completionRate} />
+      </div>
     </TabStudyResultStyle>
   );
 }

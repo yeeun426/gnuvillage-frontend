@@ -19,7 +19,7 @@ import StudyIntro from "./pages/StudyIntro";
 import LogIn from "./pages/LogIn";
 import StudyNotice from "./pages/StudyNotice";
 import StudyResults from "./pages/StudyResults";
-import Signup from './pages/SignUp'
+import Signup from "./pages/SignUp";
 import StudyNoticeEdit from "./pages/StudyNoticeEdit";
 import StudyNoticeCreate from "./pages/StudyNoticeCreate";
 import Notice from "./pages/Notice";
@@ -27,6 +27,7 @@ import NoticeEdit from "./pages/NoticeEdit";
 import NoticeCreate from "./pages/NoticeCreate";
 import FindPW from "./pages/FindPW";
 import FindID from "./pages/FindID";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -49,8 +50,8 @@ function App() {
         <Route path="/recruit" element={<Recruit />}></Route>
         <Route path="/recruit/Detail" element={<RecruitDetail />}></Route>
         <Route path="/mypage" element={<Mypage />}></Route>
-        {/* <Route path="/study-notice/0" element={<StudyNoticeList />}></Route>
-        <Route path="/study-intro/0" element={<StudyIntro />}></Route> */}
+        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/study-intro/:groupId" element={<StudyIntro />}></Route>
         <Route path="/study-notice" element={<StudyNotice />}></Route>
         <Route
           path="/study-notice/:groupId/edit/:postId"

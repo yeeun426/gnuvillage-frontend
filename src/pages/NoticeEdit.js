@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import BasePage from "../components/BasePage";
 import { useNavigate, useParams } from "react-router-dom";
-import { StudyNoticeEditStyle } from "../styles/studyNoticeEditStyled";
 import axios from "axios";
 import PostForm from "../components/PostForm";
 
 const BACKEND_URL = "http://114.206.145.160:3000";
-let userId = "superuser";
-let password = "testpw123";
+let userId;
 let token;
 let postId;
 
 async function onMount(setPostState, navigate) {
   let newPostState = {};
 
-  //로그인 과정
-  await axios
-    .post(BACKEND_URL + "/auth/login", {
-      id: userId,
-      password: password,
-    })
-    .then(async (res) => {
-      token = res.data;
-    });
+  if (
+    sessionStorage["id"] === undefined ||
+    sessionStorage["token"] === undefined
+  ) {
+    navigate("/login", { replace: true });
+    alert("로그인이 필요합니다.");
+  } else {
+    userId = sessionStorage["id"];
+    token = sessionStorage["token"];
+  }
 
   //관리자 아니면 뒤로가기
   if (userId !== "superuser") {
@@ -90,30 +89,14 @@ export default function NoticeEdit() {
   }, [navigate]);
 
   return (
-    <StudyNoticeEditStyle>
-      <Navbar />
-
-      <div className="base-header">
-        <img
-          className="base-header-img"
-          src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
-          alt="headerImg"
-        />
-        <div className="base-header-title">Notice</div>
-      </div>
-
-      <div className="container">
-        <div className="base-title">공지 수정</div>
-        <div>
-          <PostForm
-            title={postState.title}
-            content={postState.content}
-            onSubmit={(e) => {
-              onSubmit(e, navigate);
-            }}
-          ></PostForm>
-        </div>
-      </div>
-    </StudyNoticeEditStyle>
+    <BasePage headerTitle="Notice" title="공지 수정">
+      <PostForm
+        title={postState.title}
+        content={postState.content}
+        onSubmit={(e) => {
+          onSubmit(e, navigate);
+        }}
+      ></PostForm>
+    </BasePage>
   );
 }

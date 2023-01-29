@@ -6,8 +6,7 @@ import axios from "axios";
 import Pagination from "../components/Pagination";
 
 const BACKEND_URL = "http://114.206.145.160:3000";
-let userId = "superuser";
-let password = "testpw123";
+let userId;
 let isAdmin = false;
 let pageNo = 1;
 let totalPage = 10;
@@ -15,11 +14,12 @@ let totalPage = 10;
 async function onMount(setNoticeState, navigate) {
   let newnoticeState = {};
 
-  //로그인 과정
-  await axios.post(BACKEND_URL + "/auth/login", {
-    id: userId,
-    password: password,
-  });
+  if (
+    sessionStorage["id"] !== undefined &&
+    sessionStorage["token"] !== undefined
+  ) {
+    userId = sessionStorage["id"];
+  }
 
   //유저가 관리자인지 확인
   if (userId === "superuser") {

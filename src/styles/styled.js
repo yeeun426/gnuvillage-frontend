@@ -450,4 +450,9 @@ export const BaseStyle = styled.div`
     padding: 20px 0;
     font-family: "Pretendard";
   }
+
+  .container {
+    text-align: left;
+  }
+
 `;
