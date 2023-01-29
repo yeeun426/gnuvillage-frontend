@@ -47,7 +47,6 @@ export const NavbarStyle = styled.div`
     width: 120px;
   }
 
-  /* 50~56줄 수정한 부분 시작 */
   .navbar-menu-main div a {
     color: white;
     text-decoration: none;
@@ -77,7 +76,6 @@ export const NavbarStyle = styled.div`
     color: Turquoise;
     transition: 0.5s;
   }
-  /* 수정한 부분 끝 */
 
   .navbar-menu-main div a:hover {
     border-bottom: 1px solid #cf72f2;
@@ -195,18 +193,20 @@ export const MainStyle = styled.div`
 
   .main-container {
     display: flex;
-    height: 250px;
     gap: 55px;
   }
 
   .main-intro-img {
-    border: 1px solid;
-    width: 300px;
+    width: 290px;
   }
 
   .main-intro-txt {
-    border: 1px solid;
+    h5 {
+      font-weight: bold;
+    }
     width: 700px;
+    text-align: left;
+    align-items: center;
   }
 
   .main-sub-title {
@@ -233,13 +233,13 @@ export const MainStyle = styled.div`
     .main-history-container {
       padding: 0 30px;
       display: flex;
-      gap: 60px;
+      gap: 30px;
     }
 
     .test {
       position: absolute;
-      top: 27.5%;
-      background-color: black;
+      top: 25%;
+      background-color: gray;
       width: 100%;
       height: 1px;
     }
@@ -253,14 +253,18 @@ export const MainStyle = styled.div`
     }
 
     .main-history-activity {
-      background-color: #ebebeb;
-      width: 220px;
-      height: 220px;
+      background-color: whitesmoke;
+      font-family: "Pretendard-Thin";
+      /* width: 220px; */
+      width: 180px;
+      height: 280px;
+      padding: 10px;
     }
 
     .main-history-items {
       display: flex;
       font-family: "Pretendard";
+      font-size: 14px;
       text-align: left;
       flex-direction: column;
       gap: 10px;
@@ -311,9 +315,11 @@ export const IntroductionStyle = styled.div`
   }
 
   .intro-title {
-    font-size: 25px;
+    font-size: 35px;
     text-align: center;
     padding: 20px 0;
+    height: 150px;
+    font-weight: bold;
   }
 
   .intro-contents {
@@ -326,14 +332,18 @@ export const IntroductionStyle = styled.div`
   }
 
   .intro-img {
-    border: 1px solid black;
     width: 450px;
     height: 300px;
+    padding: 10px;
   }
 
   .intro-txt {
+    h4 {
+      font-weight: bold;
+    }
     width: 65%;
     text-align: left;
+    padding: 20px;
   }
 `;
 
@@ -363,6 +373,7 @@ export const HistoryStyle = styled.div`
 
   .history-title {
     font-size: 25px;
+    font-weight: bold;
     text-align: center;
     padding: 20px 0;
   }
@@ -376,7 +387,8 @@ export const HistoryStyle = styled.div`
     content: "";
     position: absolute;
     top: 0;
-    left: 10.7%;
+    /* left: 10.7%; */
+    left: 9.7%;
     width: 2px;
     height: 100%;
     background: #ccd1d9;
@@ -394,8 +406,10 @@ export const HistoryStyle = styled.div`
 
     .history-contents {
       width: 70%;
-      background: lightgray;
-      height: 250px;
+      text-align: left;
+      padding: 10px;
+      background: whitesmoke;
+      line-height: 1.8;
     }
 
     .history-dot {
@@ -440,4 +454,5 @@ export const BaseStyle = styled.div`
   .container {
     text-align: left;
   }
+
 `;
