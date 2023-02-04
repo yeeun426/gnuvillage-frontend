@@ -35,10 +35,14 @@ const StudyResultsStyle = styled.div`
 const StudyResultsPage = styled.div`
   position: relative;
   margin: 30px 80px;
+
+  a {
+    margin: 10px auto;
+  }
 `;
 
 const Pos = styled.div`
-  padding: 20px 30px;
+  padding: 0 30px 20px 30px;
   display: flex;
   align-content: flex-start;
   justify-content: flex-start;
@@ -71,27 +75,32 @@ export default function StudyResults() {
       </IntroductionStyle>
 
       <StudyResultsPage>
+        <StudyTitle1>팀 결과물</StudyTitle1>
         <Pos>
-          {/* <Link to="/study-intro/0" style={{ color: "black" }}>
-            <StudyResultItem></StudyResultItem>
-          </Link> */}
-          <StudyResultItem 
-            study={"Web development"}
-            image = {result1}>
-          </StudyResultItem>
-          <StudyResultItem 
-            study={"Data science"}
-            image = {result2}>
-          </StudyResultItem>
-          <StudyResultItem
-            study={"Algorithms"}
-            image = {result3}>
-          </StudyResultItem>
-          <StudyResultItem
-            study={"Web basic"}
-            image = {result4}>
-          </StudyResultItem>
-          {/* <StudyResultItem></StudyResultItem> */}
+          <Link to="/study-intro/6" style={{ color: "black" }}>
+            <StudyResultItem
+              study={"Web development"}
+              image = {result1}>
+            </StudyResultItem>
+          </Link>
+          <Link to="/study-intro/4" style={{ color: "black" }}>
+            <StudyResultItem 
+              study={"Data science"}
+              image = {result2}>
+            </StudyResultItem>
+          </Link>
+          <Link to="/study-intro/3" style={{ color: "black" }}>
+            <StudyResultItem
+              study={"Algorithms"}
+              image = {result3}>
+            </StudyResultItem>
+          </Link>
+          <Link to="/study-intro/5" style={{ color: "black" }}>
+            <StudyResultItem
+              study={"Web basic"}
+              image = {result4}>
+            </StudyResultItem>
+          </Link>
         </Pos>
 
         <StudyTitle1>활동 사진</StudyTitle1>
