@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Pretendard;
 }
 
 body {
@@ -35,4 +36,23 @@ a {
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 300;
   font-style: normal;
+}
+
+.intro-title-img {
+  position: relative;
+}
+
+.intro-title-img img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.intro-header-title {
+  position: absolute;
+  top: 50%;
+  right: 44%;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
 }

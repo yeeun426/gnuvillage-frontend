@@ -126,7 +126,7 @@ export const MainStyle = styled.div`
     background-size: contain;
     position: absolute;
     width: 30%;
-    top: 50%;
+    top: 43%;
     left: 50%;
     font-family: "Pretendard";
     line-height: 1.3;
@@ -146,7 +146,7 @@ export const MainStyle = styled.div`
   }
 
   .main-title-img {
-    height: 700px;
+    height: 600px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url(../images/bg.jpg);
     background-position: center;
@@ -191,6 +191,11 @@ export const MainStyle = styled.div`
     margin-bottom: 20px;
   }
 
+  .main-review-title {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+
   .main-container {
     display: flex;
     gap: 55px;
@@ -201,12 +206,13 @@ export const MainStyle = styled.div`
   }
 
   .main-intro-txt {
-    h5 {
-      font-weight: bold;
-    }
     width: 700px;
     text-align: left;
     align-items: center;
+
+    b {
+      color : #0b3caf;
+    }
   }
 
   .main-sub-title {
@@ -383,14 +389,13 @@ export const HistoryStyle = styled.div`
     position: relative;
   }
 
-  .history-container::before {
+  .history-dot.first::before {
     content: "";
     position: absolute;
     top: 0;
-    /* left: 10.7%; */
-    left: 9.7%;
+    left: 45%;
     width: 2px;
-    height: 100%;
+    height: 1900px;
     background: #ccd1d9;
   }
 
@@ -418,6 +423,7 @@ export const HistoryStyle = styled.div`
       background: lightgray;
       margin-top: 10px;
       border-radius: 50%;
+      position: relative;
     }
   }
 `;

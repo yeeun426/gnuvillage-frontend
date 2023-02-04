@@ -18,7 +18,6 @@ const StudyIntroStyle = styled.div``;
 
 const StudyIntroPage = styled.div`
   position: relative;
-  top: 70px;
   margin: 30px 80px;
 `;
 
@@ -109,7 +108,14 @@ export default function StudyIntro() {
   return (
     <StudyIntroStyle>
       <Navbar />
-
+      <div className="intro-title-img">
+        <img
+          className="main-img"
+          src="https://builder.hufs.ac.kr/user/hufs/mycodyimages/rr5back2.jpg"
+          alt="mainImg"
+        />
+        <div className="intro-header-title">Study Introduction</div>
+      </div>
       <StudyIntroPage>
         <PageIndex>
           <Link to="/study" style={{ textDecoration: "none" }}>

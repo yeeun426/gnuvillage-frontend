@@ -63,7 +63,7 @@ function Main() {
             <div>작성자: {reviewState.list[i].userId}</div>
           </div>
           <div className="main-review-txt">
-            <strong>제목: {reviewState.list[i].title}</strong>
+            <div className = "main-review-title">{reviewState.list[i].title}</div>
             <div>{reviewState.list[i].content}</div>
           </div>
         </div>
@@ -103,7 +103,7 @@ function Main() {
             </div>
 
             <div className="main-intro-txt">
-              <h5>한국외대 글로벌캠퍼스 소프트웨어 중앙 동아리</h5>
+              <h4>한국외대 글로벌캠퍼스 소프트웨어 중앙 동아리</h4>
               소프트웨어에 대한 다양한 스터디 학습을 경험할 수 있는
               동아리입니다.
               <br />

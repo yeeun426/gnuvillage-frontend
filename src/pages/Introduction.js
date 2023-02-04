@@ -45,13 +45,6 @@ export default function Introduction() {
         </div>
 
         <div className="intro-contents">
-          <div>
-            <img
-              className="intro-img"
-              src={img2}
-              alt="img_말로 체득하는 지식"
-            />
-          </div>
           <div className="intro-txt">
             <h4>말로 체득하는 지식</h4>
             <b>발표, 토론을 통해 서로 가르쳐주며 성장해요!</b>
@@ -61,6 +54,13 @@ export default function Introduction() {
             모르는지 알게 됩니다. 각인효과로, 설명하는 과정에서 아는 것은 더욱
             명료하게 머릿속에 정리됩니다. 습득한 지식을 스터디에서 발표, 토론을
             통해 말로 표현하면서 효과적으로 학습할 수 있습니다.
+          </div>
+          <div>
+            <img
+              className="intro-img"
+              src={img2}
+              alt="img_말로 체득하는 지식"
+            />
           </div>
         </div>
 
@@ -85,13 +85,6 @@ export default function Introduction() {
         </div>
 
         <div className="intro-contents">
-          <div>
-            <img
-              className="intro-img"
-              src={img4}
-              alt="img_자유로운 스터디 형성"
-            />
-          </div>
           <div className="intro-txt">
             <h4>자유로운 스터디 형성</h4>
             <b>
@@ -102,6 +95,13 @@ export default function Introduction() {
             C언어, Java, Python, 데이터사이언스, 웹 개발, 앱 개발 등 다양한
             분야와 수준별 분반으로 스터디를 참여할 수 있습니다. 자신의 관심
             분야에 맞는 새로운 스터디 또한 개설할 수 있습니다.
+          </div>
+          <div>
+            <img
+              className="intro-img"
+              src={img4}
+              alt="img_자유로운 스터디 형성"
+            />
           </div>
         </div>
       </div>

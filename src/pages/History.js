@@ -21,7 +21,7 @@ export default function History() {
 
         <div className="history-container">
           <div className="history-items">
-            <div className="history-dot"></div>
+            <div className="history-dot first"></div>
             <div className="history-year">2022</div>
             <div className="history-contents">
               <b>Mar-Jun.</b> 알고리즘, 파이썬, 웹개발, C언어, 빅데이터,
