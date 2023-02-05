@@ -42,7 +42,7 @@ export default function Introduction() {
 
                 <div className = "contact-items">
                     <div className = "contact-items-category">∙ e-mail</div>
-                    <div>gnuvil@hufs.ac.kr</div>
+                    <div>hufsgnuvil@gmail.com</div>
                 </div>
             </div>
         </div>
