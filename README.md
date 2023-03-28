@@ -78,6 +78,7 @@
 -------------
 ## 배포
 > 현재 동아리와 협업 중인 SWYG에서 배포하기위해 SWYG측과 소통 중<br/>
-> 배포 완료될 시 바로 업로드할 예정
+> 배포 완료될 시 바로 업로드할 예정<br/>
+> https://gnuvil.swygbro.com/
 
 ![다운로드](https://user-images.githubusercontent.com/88296511/217285885-86e83ef3-4b61-4838-bcc5-9150f46fc97f.gif)
